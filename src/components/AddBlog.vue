@@ -2,9 +2,9 @@
   <div>
     <form>
       <label>Title</label>
-      <input type="text" id="blog-title" v-model="blog.title" />
+      <input type="text" id="blog-title" v-model.lazy="blog.title" />
       <label>Blog Content</label>
-      <textarea id="blog-content" v-model="blog.content"></textarea>
+      <textarea id="blog-content" v-model.lazy="blog.content"></textarea>
       <label>Author</label>
       <select v-model="blog.author">
         <option value="Cole">Cole</option>
@@ -26,6 +26,7 @@ export default {
   data: function() {
     return {
       blog: {
+        id: 0,
         title: "",
         content: "",
         author: ""
@@ -34,7 +35,9 @@ export default {
   },
   methods: {
     addBlog() {
-      this.$emit("addBlog", this.blog);
+      let newBlog = Object.assign({}, this.blog);
+      newBlog.id = Math.random();
+      this.$emit("addBlog", newBlog);
     }
   }
 };

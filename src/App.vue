@@ -1,25 +1,28 @@
 <template>
   <div>
     <add-blog @addBlog="addBlog"></add-blog>
+    <list-blogs :blogs="blogs"></list-blogs>
   </div>
 </template>
 
 <script>
 import AddBlog from "./components/AddBlog";
+import ListBlogs from "./components/ListBlogs";
 
 export default {
   name: "App",
   components: {
-    AddBlog
+    AddBlog,
+    ListBlogs
   },
-  data: function() {
+  data() {
     return {
       blogs: []
     };
   },
   methods: {
     addBlog(blog) {
-      this.blogs = [...this.blogs, blog];
+      this.blogs.push(blog);
     }
   }
 };
