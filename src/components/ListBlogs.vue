@@ -9,10 +9,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   data() {
     return {};
   },
-  props: ["blogs"]
+  computed: {
+    ...mapState(['blogs'])
+  }
 };
 </script>
