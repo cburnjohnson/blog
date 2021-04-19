@@ -10,7 +10,7 @@
         <option value="Cole">Cole</option>
         <option value="Kam">Kam</option>
       </select>
-      <input type="submit" value="Post Blog" @click.prevent="addBlog" />
+      <input type="submit" value="Post Blog" @click.prevent="createBlog" />
     </form>
 
     <div id="preview">
@@ -22,22 +22,24 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   data: function() {
     return {
       blog: {
         id: 0,
-        title: "",
-        content: "",
-        author: ""
+        title: '',
+        content: '',
+        author: ''
       }
     };
   },
   methods: {
-    addBlog() {
+    ...mapActions(['addBlog']),
+    createBlog: function() {
       let newBlog = Object.assign({}, this.blog);
       newBlog.id = Math.random();
-      this.$emit("addBlog", newBlog);
+      this.addBlog(newBlog);
     }
   }
 };

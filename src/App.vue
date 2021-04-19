@@ -1,30 +1,18 @@
 <template>
   <div>
-    <add-blog @addBlog="addBlog"></add-blog>
-    <list-blogs :blogs="blogs"></list-blogs>
+    <nav>
+      <ul>
+        <router-link to="/">Home</router-link>
+        <router-link to="/add-blog">Add Blog</router-link>
+      </ul>
+    </nav>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import AddBlog from "./components/AddBlog";
-import ListBlogs from "./components/ListBlogs";
-
 export default {
-  name: "App",
-  components: {
-    AddBlog,
-    ListBlogs
-  },
-  data() {
-    return {
-      blogs: []
-    };
-  },
-  methods: {
-    addBlog(blog) {
-      this.blogs.push(blog);
-    }
-  }
+  name: 'App'
 };
 </script>
 
